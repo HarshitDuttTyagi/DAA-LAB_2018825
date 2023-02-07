@@ -1,3 +1,5 @@
+//Given an array of non negative integers and key element is entered and then Search the given keyis in the array.
+//If yes then print the index of the key in the array and if not present print the a message of not found.
 import java.util.*;
 public class Main
 {
