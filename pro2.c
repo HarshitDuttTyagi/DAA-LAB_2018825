@@ -43,8 +43,8 @@ int main()
     int key;
     printf("enter element you want to search");
     scanf("%d",&key);
-    int f=firstocc(a,10,key);
-    int l=lastocc(a,10,key);
+    int f=firstocc(a,n,key);
+    int l=lastocc(a,n,key);
     if(f==-1&&l==-1) printf("ele not found");
     else
     {
