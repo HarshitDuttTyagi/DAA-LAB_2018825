@@ -1,56 +1,55 @@
-#include<stdio.h>
-int binarysearch(int arr[],int start,int end,int key)
-{   int i,freq;
-    if(start==end)//array has only one element
+#include <stdio.h>
+int firstocc(int a[],int n,int ele)
+{
+    int b=0,e=n-1,mid,f=-1;
+    while(b<=e)
     {
-        if(arr[start]==key)
-        {
-         freq++;
-         return freq;
-        }
+        mid=(b+e)/2;
+        if((mid==0||a[mid-1]<ele)&&a[mid]==ele)
+        {f=mid; break;}
+        else if(ele >a[mid])b=mid+1;
         else
-        return -1;
+            e=mid-1;
+    
     }
-    else
-    {
-        int mid;
-        mid=(start+end)/2;
-        if(arr[mid]==key)
-        {
-            freq++;
-        }
-        else if(arr[mid]>key)
-        {
-            binarysearch(arr,start,mid-1,key);
-            return freq;
-        }
-        else
-        {
-         binarysearch(arr,mid+1,end,key);
-         return freq;
-        }
-    }
+    return f;
 }
+int lastocc(int a[],int n,int ele)
+{
+    int b=0,e=n-1,mid,l=-1;
+    while(b<=e)
+    {
+        mid=(b+e)/2;
+        if((mid==n-1||a[mid+1]>ele)&&a[mid]==ele)
+        {l=mid; break;}
+        else if(ele <a[mid])e=mid-1;
+        else
+            b=mid+1;
+    }
+    return l;
+}
+
 int main()
 {
-    int n,p=0;
+    int n;
     printf("enter size of array");
     scanf("%d",&n);
-    int arr[n];
-    printf("enter elements of array");
+    int a[n];
+    printf("enter elements");
     for(int i=0;i<n;i++)
     {
-        scanf("%d",&arr[i]);
+        scanf("%d",&a[i]);
     }
-    int start=arr[0];
-    int end=arr[n-1];
     int key;
-    printf("enter the key you want to search");
+    printf("enter element you want to search");
     scanf("%d",&key);
-    p=binarysearch(arr,start,end,key);
-    if(p>0)
-    printf("element occur %d times",p);
+    int f=firstocc(a,10,key);
+    int l=lastocc(a,10,key);
+    if(f==-1&&l==-1) printf("ele not found");
     else
-    printf("element not found");
+    {
+        int count=(l-f)+1;
+        printf("ele found %d",count);
+    }
     return 0;
 }
