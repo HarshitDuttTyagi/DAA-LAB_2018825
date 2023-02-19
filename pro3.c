@@ -2,13 +2,13 @@
 #include<math.h>
 int main()
 {
-    int start=0,p=1,key,n;
+    int start=0,p=1,key,n,f=0,i;
     int end=pow(2,p++);
     printf("enter size of array");
     scanf("%d",&n);
     int arr[n];
     printf("enter the elements");
-    for(int i=0;i<n;i++)
+    for(i=0;i<n;i++)
     {
         scanf("%d",&arr[i]);
     }
@@ -21,13 +21,17 @@ int main()
         if(end>n-1)
         end=n;
     }
-    for(int i=start;i<end;i++)
+    for(i=start;i<end;i++)
     {
         if(arr[i]==key)
         {
-            printf("%d is found at %d position in array",key,i);
+            f++;
             break;
         }
-        return 0;
     }
+    if(f==1)
+    printf("%d is found at %d position in array",key,i);
+    else
+    printf("element not found");
+    return 0;
 }
